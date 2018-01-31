@@ -13,7 +13,7 @@ end
 
 def songs
   @songs
-end 
+end
 
 
 def self.all
@@ -41,8 +41,8 @@ if song.artist == nil
 end
 if self.songs.include?(song)
 else @songs << song
-end 
-end 
+end
+end
 
 
 def genres
