@@ -11,6 +11,11 @@ def initialize(name)
 @songs = []
 end
 
+def songs
+  @songs
+end 
+
+
 def self.all
 @@all
 end
@@ -24,19 +29,21 @@ def save
 end
 
 def self.create(name)
-artist = Artist.new(name)
-@@all << artist
+artist = new(name)
+artist.save
 artist
 end
 
-def songs
-@songs
-end
 
 def add_song(song)
-song.artist = self unless !!song.artist
-@songs << song unless @songs.include?(song)
-  end
+if song.artist == nil
+  song.artist = self
+end
+if self.songs.include?(song)
+else @songs << song
+end 
+end 
+
 
 def genres
 @songs.collect {|song| song.genre}.uniq
