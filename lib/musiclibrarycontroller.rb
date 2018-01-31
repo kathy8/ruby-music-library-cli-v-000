@@ -1,5 +1,5 @@
 class MusicLibraryController
- 
+
   def initialize(path='./db/mp3s')
   newimport = MusicImporter.new(path)
   newimport.import
@@ -71,29 +71,29 @@ end
 end
 end
 
- +  def list_songs_by_genre
- +    counter = 1
- +
- +    puts "Please enter the name of a genre:"
- +    genre = gets.chomp
- +
- +    Song.all.sort_by!(&:name)
- +    Song.all.each do |song|
- +      if song.genre.name == genre
- +        puts "#{counter}. #{song.artist.name} - #{song.name}"
- +        counter += 1
- +      end
- +    end
- +  end
- +
- +  def play_song
- +    puts 'Which song number would you like to play?'
- +    Song.all.sort_by!(&:name)
- +    input = gets.chomp
- +    song_number = input.to_i - 1
- +    if Song.all[song_number] && input.to_i > 0
- +      puts "Playing #{Song.all[song_number].name} by #{Song.all[song_number].artist.name}"
- +    end
- +  end
- +
- +end
+def list_songs_by_genre
+counter = 1
+
+puts "Please enter the name of a genre:"
+genre = gets.chomp
+
+Song.all.sort_by!(&:name)
+Song.all.each do |song|
+if song.genre.name == genre
+puts "#{counter}. #{song.artist.name} - #{song.name}"
+counter += 1
+end
+end
+end
+
+def play_song
+puts 'Which song number would you like to play?'
+Song.all.sort_by!(&:name)
+input = gets.chomp
+song_number = input.to_i - 1
+if Song.all[song_number] && input.to_i > 0
+puts "Playing #{Song.all[song_number].name} by #{Song.all[song_number].artist.name}"
+end
+end
+
+end
